@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+var mongoose = require('mongoose')
 
-const schema = mongoose.Schema({
+var schema = mongoose.Schema({
     name: String,
     email: String,
     password: String,

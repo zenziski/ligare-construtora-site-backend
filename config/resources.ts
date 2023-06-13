@@ -87,7 +87,7 @@ let mapFolder = (app: { [x: string]: (arg0: any, arg1: any, arg2: any) => void; 
                 verb: verb || 'get',
                 route: fullRoute,
                 middlewares: [...middlewares],
-                handler: async (req: any, res: { status: (arg0: number) => { (): any; new(): any; send: { (arg0: { message: any; }): any; new(): any; }; }; }) => {
+                handler: async (req: any, res: any) => {
                     try {
                         return await handler(req, res);
                     } catch (err: any) {
