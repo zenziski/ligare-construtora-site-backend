@@ -1,5 +1,4 @@
-import { Request, Response } from "express";
-import { ConstructionDTO } from "../../DTO/construction.dto"
+import { Response } from "express";
 import moment from 'moment';
 const multer = require('multer')
 
@@ -27,12 +26,15 @@ module.exports = (app: any) => ({
         for (const file of req.files) {
             console.log(file.filename.substring(file.filename.lastIndexOf('.')));
             if (acceptedExtensions.includes(file.filename.substring(file.filename.lastIndexOf('.')))) {
+
+                console.log(file.filename, file.destination);
+                
                 await File.create({
                     name: file.filename,
                     location: `${file.destination}${file.filename}`
                 })
             }
         }
-        return res.status(200).json({message: "SUCCESS"})
+        return res.status(200).json({ message: "SUCCESS" })
     }
 });
