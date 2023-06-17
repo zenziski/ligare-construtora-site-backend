@@ -11,11 +11,11 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
-//const loggerMiddleware = require('./middlewares/authentication')(app),
 
 app.use(cors());
 app.use(express.json());
 app.use(require('./middlewares/logger')(app))
+app.use('/uploads', express.static('uploads'))
 
 const mongoURL = process.env.MONGO_URL;
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -41,10 +41,6 @@ resourcesMap(app, {
     directory: path.join(__dirname, 'resources'),
     log: null,
     authentication: require('./middlewares/authentication')(app),
-    /* pipes: {
-        validation: require('./middlewares/validation'),
-        basic_auth: require('./middlewares/basic_authentication'),
-    } */
 });
 
 const Jwt = require('./config/jwt')();
