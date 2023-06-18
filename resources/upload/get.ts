@@ -9,7 +9,7 @@ module.exports = (app: any) => ({
         let mappedFiles = files.map((file: any) => {
             return {
                 ...file,
-                location: `${process.env.URL_BACKEND}${file.location}`
+                location: `${process.env.URL_BACKEND}/${file.location}`
             }
         })
         return res.status(200).json({ files: mappedFiles })

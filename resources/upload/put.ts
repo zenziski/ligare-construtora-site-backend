@@ -5,7 +5,7 @@ import moment from 'moment';
 
 
 module.exports = (app: any) => ({
-    verb: "delete",
+    verb: "put",
     route: '/',
     handler: async (req: any, res: Response) => {
         const { File } = app.models;

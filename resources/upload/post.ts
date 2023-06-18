@@ -25,7 +25,6 @@ module.exports = (app: any) => ({
         const acceptedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.tiff'];
         const { File } = app.models;
         for (const file of req.files) {
-            console.log(file.filename.substring(file.filename.lastIndexOf('.')));
             if (acceptedExtensions.includes(file.filename.substring(file.filename.lastIndexOf('.')))) {
                 await File.create({
                     name: file.filename,
