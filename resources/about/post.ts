@@ -6,7 +6,7 @@ module.exports = (app: any) => ({
     handler: async (req: Request, res: Response) => {
         const { text, images } = req.body
         const { About } = app.models
-        if (!text && !images) {
+        if (!text || !images) {
             return res.status(404).json({ message: 'NO_DATA' })
         }
         const find = await About.find()
