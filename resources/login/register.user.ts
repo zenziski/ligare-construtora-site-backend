@@ -17,11 +17,7 @@ module.exports = (app: any) => ({
             await User.create({
                 name: userData.name,
                 email: userData.email,
-                password: hashPassword,
-                validation: {
-                    validationCode: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000
-                },
-                cpf: userData.cpf
+                password: hashPassword
             })
             return res.json({created: true})
         } catch (error: any) {

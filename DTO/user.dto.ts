@@ -3,14 +3,6 @@ export interface IUser {
     name: string,
     email: string,
     password: string,
-    isBlocked: boolean,
-    isActive: boolean,
-    validation: {
-        isValidated: boolean,
-        validationCode?: Number
-    },
-    permission: string
-    cpf: string
 }
 
 export interface IUserLogin {
@@ -22,7 +14,6 @@ export interface IUserRegister {
     email: string,
     password: string,
     name: string,
-    cpf: string
 }
 
 export enum IUserErrors {
