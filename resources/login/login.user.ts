@@ -15,6 +15,7 @@ module.exports = (app: any) => ({
             if (!user) throw {message: IUserErrors.NOT_FOUND, code: 404}
 
             const passwordMatch = await bcrypt.compare(userData.password, user.password)
+                        
             if(!passwordMatch) throw {message: IUserErrors.WRONG_PASSWORD, code: 401}
 
             const token = Jwt.generate({
