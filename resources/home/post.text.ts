@@ -2,27 +2,28 @@ import { Request, Response } from "express";
 
 module.exports = (app: any) => ({
     verb: 'post',
-    route: '/images',
+    route: '/text',
     handler: async (req: Request, res: Response) => {
-        const { images } = req.body
+        const { title, description } = req.body
         const { HomeSlider } = app.models
 
-        if (!images) {
+        if (!title || !description) {
             return res.status(404).json({ message: 'NO_DATA' })
         }
         const find = await HomeSlider.find()
         if (find.length === 0) {
             await HomeSlider.create({
-                description: '',
-                images,
-                title: ''
+                description,
+                images: [''],
+                title
             })
             return res.status(200).json({ message: 'SUCCESS' })
         }
         await HomeSlider.updateOne({
             _id: find[0]._id
         }, {
-            images,
+            description,
+            title
         })
         return res.status(200).json({ message: 'SUCCESS' })
     }
