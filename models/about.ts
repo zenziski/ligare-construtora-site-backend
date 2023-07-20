@@ -1,8 +1,9 @@
 var mongoose = require('mongoose')
 
 var schema = mongoose.Schema({
-    text: String,
-    images: []
+    whoWeAre: String,
+    imagemPrincipal: String,
+    team: String
 }, {
     timestamps: true
 })

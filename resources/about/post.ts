@@ -4,25 +4,27 @@ module.exports = (app: any) => ({
     verb: 'post',
     route: '/',
     handler: async (req: Request, res: Response) => {
-        const { text, images } = req.body
-        const { About } = app.models
-        if (!text || !images) {
-            return res.status(404).json({ message: 'NO_DATA' })
+        const { About } = app.models;
+        const body = req.body;
+        const about = await About.find();
+        if (about.length > 0) {
+            try {
+                await About.updateOne({ _id: about[0]._id }, {
+                    whoWeAre: body.whoWeAre,
+                    team: body.team,
+                    imagemPrincipal: body.imagemPrincipal
+                });
+                return res.status(200).json(true)
+            } catch (error) {
+                console.log(error);
+                return false
+            }
         }
-        const find = await About.find()
-        if (find.length === 0) {
-            await About.create({
-                text,
-                images
-            })
-            return res.status(200).json({ message: 'SUCCESS' })
-        }
-        await About.updateOne({
-            _id: find[0]._id
-        }, {
-            text,
-            images
-        })
-        return res.status(200).json({ message: 'SUCCESS' })
+        await About.create({
+            whoWeAre: body.whoWeAre,
+            team: body.team,
+            imagemPrincipal: body.imagemPrincipal
+        });
+        return res.status(200).json(true)
     }
 })

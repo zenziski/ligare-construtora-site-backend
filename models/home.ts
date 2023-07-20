@@ -3,16 +3,16 @@ var mongoose = require('mongoose')
 var schema = mongoose.Schema({
     description: String,
     construction: {
-        name: String,
-        image: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'construction'
     },
     project: {
-        name: String,
-        image: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'construction'
     },
     reform: {
-        name: String,
-        image: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'construction'
     },
     imagemPrincipal: String
 }, {

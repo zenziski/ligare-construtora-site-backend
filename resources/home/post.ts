@@ -8,14 +8,19 @@ module.exports = (app: any) => ({
         const body = req.body;
         const home = await Home.find();
         if (home.length > 0) {
-            await Home.updateOne({ _id: home[0]._id }, {
-                description: body.description,
-                construction: { ...body.construcao },
-                project: { ...body.projeto },
-                reform: { ...body.reforma },
-                imagemPrincipal: body.imagemPrincipal
-            });
-            return res.status(200).json(true)
+            try {
+                await Home.updateOne({ _id: home[0]._id }, {
+                    description: body.description,
+                    construction: body.construcao,
+                    project: body.projeto,
+                    reform: body.reforma,
+                    imagemPrincipal: body.imagemPrincipal
+                });
+                return res.status(200).json(true)
+            } catch (error) {
+                console.log(error);
+                return false
+            }
         }
         await Home.create({
             description: body.description,
