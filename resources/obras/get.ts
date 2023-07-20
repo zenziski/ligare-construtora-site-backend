@@ -5,9 +5,9 @@ module.exports = (app: any) => ({
     route: '/',
     anonymous: true,
     handler: async (req: Request, res: Response) => {
-        const { Home } = app.models;
-        const [data] = await Home.find({}).lean();
+        const { Construction } = app.models;
+        const data = await Construction.find({}).lean();
 
-        return res.status(200).json({ ...data })
+        return res.status(200).json(data)
     }
 })
