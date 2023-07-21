@@ -24,9 +24,9 @@ module.exports = (app: any) => ({
         }
         await Home.create({
             description: body.description,
-            construction: { ...body.construcao },
-            project: { ...body.projeto },
-            reform: { ...body.reforma },
+            construction: body.construcao,
+            project: body.projeto,
+            reform: body.reforma,
             imagemPrincipal: body.imagemPrincipal
         });
         return res.status(200).json(true)
