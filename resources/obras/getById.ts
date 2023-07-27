@@ -4,7 +4,9 @@ module.exports = (app: any) => ({
     verb: 'get',
     route: '/:id',
     anonymous: true,
-    handler: async (req: Request, res: Response) => {
+    handler: async (req: Request, res: Response) => { 
+        console.log(req.params.id);
+                       
         const { Construction } = app.models;
         const data = await Construction.findOne({ slug: req.params.id }).populate('vinculo').lean();
 

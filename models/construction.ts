@@ -9,7 +9,8 @@ var schema = mongoose.Schema({
         ref: 'construction'
     },
     images: [],
-    data: []
+    data: [],
+    mainImage: String,
 }, { timestamps: true });
 
 module.exports = mongoose.model("construction", schema);
