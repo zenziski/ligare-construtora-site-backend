@@ -11,6 +11,7 @@ var schema = mongoose.Schema({
     images: [],
     data: [],
     mainImage: String,
+    ordem: Number
 }, { timestamps: true });
 
 module.exports = mongoose.model("construction", schema);

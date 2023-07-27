@@ -14,6 +14,7 @@ module.exports = (app: any) => ({
                 images: body.images,
                 data: body.data,
                 vinculo: body.vinculo,
+                ordem: body.ordem
             })
         } catch (error) {
             console.log(error);
