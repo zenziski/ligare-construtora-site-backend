@@ -14,7 +14,8 @@ var schema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'construction'
     },
-    imagemPrincipal: String
+    imagemPrincipal: String,
+    capaObras: String
 }, {
     timestamps: true
 })
