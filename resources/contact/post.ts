@@ -11,6 +11,7 @@ module.exports = (app: any) => ({
             await Contact.create({
                 name: body.name,
                 phone: body.phone,
+                email: body.email,
                 description: body.description
             })
         }
